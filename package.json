@@ -1,6 +1,6 @@
 {
+  "homepage": "https://andychen482.github.io/AITicTacToe/",
   "name": "aitictactoe",
-  "homepage": "https://andychen482.github.io/AITicTacToe/"
   "version": "0.1.0",
   "private": true,
   "dependencies": {
