@@ -83,13 +83,16 @@ export default function Game() {
   }
 
   return (
-    <div className="game">
+    <>
       <div className="title">AI Tic Tac Toe</div>
-      <div className="game-board">
-        <Board squares={currentSquares} onPlay={handlePlay} />
+      <div className="game">
+        <div className="game-board">
+          <Board squares={currentSquares} onPlay={handlePlay} />
+        </div>
+        <button onClick={reset}>Reset</button>
+        <div className="footer">Made by Andy, Misha, Beto, and Maxie</div>
       </div>
-      <button onClick={reset}>Reset</button>
-    </div>
+    </>
   );
 }
 
