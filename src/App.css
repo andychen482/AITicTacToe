@@ -1,38 +1,106 @@
-.App {
-  text-align: center;
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #0d4589;
+  background: linear-gradient(270deg, #ae320f, #000000, #001a81, #000000);
+  background-size: 600% 600%;
+  animation: gradientBackground 25s infinite;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.game {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.game-board {
+  margin-right: 5px;
+}
+
+.board-row {
+  display: flex;
+}
+
+.square {
+  background: #ffffff;
+  border: 2px solid #999;
+  float: left;
+  font-size: 50px;
+  font-weight: bold;
+  line-height: 96px;
+  height: 100px;
+  width: 100px;
+  margin-right: 1px;
+  margin-top: 1px;
+  padding: 0;
+  text-align: center;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.square:hover {
+  background-color: #e3e3e3;
+  transform: scale(1.05);
+}
+
+.gameStatus {
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.status {
+  margin-bottom: 10px;
+  font-size: 20px;
+  color: #ffffff;
+}
+
+.game-info {
+  width: 200px;
+}
+
+.game-info ol {
+  padding-left: 30px;
+}
+
+.game-info ol li {
+  margin-bottom: 5px;
+}
+
+.game-info button {
+  background-color: #8c8c8c;
   color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.App-link {
-  color: #61dafb;
+.game-info button:hover {
+  background-color: #737373;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.title {
+  color: #ffffff;
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+
+@keyframes gradientBackground {
+  0% {
+    background-position: 0% 50%;
   }
-  to {
-    transform: rotate(360deg);
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
+
