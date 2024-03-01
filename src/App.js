@@ -11,9 +11,9 @@ function Square({ value, onSquareClick }) {
   );
 }
 
-function Board({ squares, onPlay }) {
+function Board({ squares, onPlay, isAIThinking }) {
   function handleClick(i) {
-    if (calculateWinner(squares) || squares[i] !== 0) {
+    if (calculateWinner(squares) || squares[i] !== 0 || isAIThinking) {
       return;
     }
     const nextSquares = squares.slice();
@@ -23,12 +23,14 @@ function Board({ squares, onPlay }) {
 
   const winner = calculateWinner(squares);
   let status;
-  if (winner !== "Draw" && winner !== null) {
-    status = "Winner: " + (winner === 1 ? "X" : "O");
+  if (isAIThinking) {
+    status = "AI is thinking...";
+  } else if (winner !== "Draw" && winner !== null) {
+    status = winner === 1 ? "You win!" : "You lose!";
   } else if (winner === "Draw") {
     status = "It's a draw!";
   } else {
-    status = "Next player: X";
+    status = "Your turn";
   }
 
   return (
@@ -57,15 +59,18 @@ export default function Game() {
   const [history, setHistory] = useState([[0, 0, 0, 0, 0, 0, 0, 0, 0]]);
   const [currentMove, setCurrentMove] = useState(0);
   const currentSquares = history[currentMove];
+  const [isAIThinking, setISAIThinking] = useState(false);
 
   useEffect(() => {
     const makeAIMove = async () => {
       if (currentMove % 2 !== 0 && calculateWinner(currentSquares) === null) {
+        setISAIThinking(true);
         const response = await requestHandler(currentSquares);
         const position = response.prediction;
         const nextSquares = [...currentSquares];
         nextSquares[position] = -1;
         handlePlay(nextSquares);
+        setISAIThinking(false);
       }
     };
     makeAIMove();
@@ -80,6 +85,7 @@ export default function Game() {
   function reset() {
     setHistory([[0, 0, 0, 0, 0, 0, 0, 0, 0]]);
     setCurrentMove(0);
+    setISAIThinking(false);
   }
 
   return (
@@ -87,7 +93,11 @@ export default function Game() {
       <div className="title">AI Tic Tac Toe</div>
       <div className="game">
         <div className="game-board">
-          <Board squares={currentSquares} onPlay={handlePlay} />
+          <Board
+            squares={currentSquares}
+            onPlay={handlePlay}
+            isAIThinking={isAIThinking}
+          />
         </div>
         <button onClick={reset} className="resetButton">
           Reset
