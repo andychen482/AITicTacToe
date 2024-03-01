@@ -89,7 +89,9 @@ export default function Game() {
         <div className="game-board">
           <Board squares={currentSquares} onPlay={handlePlay} />
         </div>
-        <button onClick={reset}>Reset</button>
+        <button onClick={reset} className="resetButton">
+          Reset
+        </button>
         <div className="footer">Made by Andy, Misha, Beto, and Maxie</div>
       </div>
     </>

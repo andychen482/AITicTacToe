@@ -23,9 +23,9 @@ body {
   padding-top: 60px;
 }
 
-.game-board {
+/* .game-board {
   margin-right: 5px;
-}
+} */
 
 .board-row {
   display: flex;
@@ -53,6 +53,11 @@ body {
 .square:hover {
   background-color: #e3e3e3;
   transform: scale(1.05);
+}
+
+.resetButton {
+  margin: 0 auto;
+  display: block;
 }
 
 .gameStatus {
