@@ -38,8 +38,8 @@ body {
   font-size: 80px;
   font-weight: bold;
   line-height: 136px;
-  height: 150px;
-  width: 150px;
+  height: 120px;
+  width: 120px;
   margin-right: 1px;
   margin-top: 1px;
   padding: 0;
@@ -98,7 +98,7 @@ body {
   left: 50%;
   transform: translateX(-50%);
   color: #ffffff;
-  font-size: 80px;
+  font-size: 50px;
   margin: 20px 0px;
   white-space: nowrap;
 }
